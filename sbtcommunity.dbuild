@@ -23,7 +23,8 @@ vars: {
 vars.base.deps.inject: [] // ["com.lightbend#cloc-plugin"]
 
 vars.uris: {
-  akka-stuff-uri:               "https://github.com/akka/akka.git"
+  # akka-stuff-uri:               "https://github.com/akka/akka.git"
+  akka-stuff-uri:               "https://github.com/eed3si9n/akka.git#5ae0413f62" # unfreeze once https://github.com/akka/akka/pull/26642 is merged
   akka-http-uri:                "https://github.com/akka/akka-http.git" // #bc849bb03"  # was master
   scalariform-uri:              "https://github.com/scala-ide/scalariform.git"
   breeze-uri:                   "https://github.com/SethTisue/breeze.git#sbt-api-mappings-version-bump"  # was scalanlp, master
