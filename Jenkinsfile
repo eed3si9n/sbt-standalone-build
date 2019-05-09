@@ -14,7 +14,7 @@ pipeline {
           sh "git fetch -f -u -q origin '+refs/pull/*/head:refs/pull/*/head' '+refs/tags/*:refs/tags/*' '+refs/heads/*:refs/heads/*'"
           sh 'git clean -fdxq'
           sh 'git reset -q --hard "${io}"'
-          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -no-colors publishLocal'
+          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -ivy /localhome/jenkinssbt/workspace/sbt-integration/.ivy -no-colors publishLocal'
         }
 
         sh 'git clone -n -q https://github.com/sbt/util.git target/util'
@@ -22,7 +22,7 @@ pipeline {
           sh "git fetch -f -u -q origin '+refs/pull/*/head:refs/pull/*/head' '+refs/tags/*:refs/tags/*' '+refs/heads/*:refs/heads/*'"
           sh 'git clean -fdxq'
           sh 'git reset -q --hard "${util}"'
-          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -no-colors publishLocal'
+          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -ivy /localhome/jenkinssbt/workspace/sbt-integration/.ivy -no-colors publishLocal'
         }
 
         sh 'git clone -n -q https://github.com/sbt/librarymanagement.git target/librarymanagement'
@@ -30,7 +30,7 @@ pipeline {
           sh "git fetch -f -u -q origin '+refs/pull/*/head:refs/pull/*/head' '+refs/tags/*:refs/tags/*' '+refs/heads/*:refs/heads/*'"
           sh 'git clean -fdxq'
           sh 'git reset -q --hard "${librarymanagement}"'
-          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -no-colors publishLocal'
+          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -ivy /localhome/jenkinssbt/workspace/sbt-integration/.ivy -no-colors publishLocal'
         }
 
         sh 'git clone -n -q https://github.com/sbt/zinc.git target/zinc'
@@ -38,7 +38,7 @@ pipeline {
           sh "git fetch -f -u -q origin '+refs/pull/*/head:refs/pull/*/head' '+refs/tags/*:refs/tags/*' '+refs/heads/*:refs/heads/*'"
           sh 'git clean -fdxq'
           sh 'git reset -q --hard "${zinc}"'
-          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -no-colors publishLocal'
+          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -ivy /localhome/jenkinssbt/workspace/sbt-integration/.ivy -no-colors publishLocal'
         }
 
         sh 'git clone -n -q https://github.com/sbt/sbt.git target/sbt'
@@ -46,7 +46,7 @@ pipeline {
           sh "git fetch -f -u -q origin '+refs/pull/*/head:refs/pull/*/head' '+refs/tags/*:refs/tags/*' '+refs/heads/*:refs/heads/*'"
           sh 'git clean -fdxq'
           sh 'git reset -q --hard "${sbt}"'
-          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -no-colors publishLocal'
+          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -ivy /localhome/jenkinssbt/workspace/sbt-integration/.ivy -no-colors publishLocal'
         }
       }
     }
