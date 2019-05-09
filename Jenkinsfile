@@ -5,9 +5,8 @@ pipeline {
     }
   }
   stages {
-    stage('Test') {
+    stage('Build') {
       steps {
-        sh 'env'
         sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt about'
       }
     }
