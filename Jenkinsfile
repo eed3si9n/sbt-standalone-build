@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'eed3si9n/sbt:jdk8-alpine'
-      args '-w /opt/workspace'
+      args '-u 1001:0'
     }
   }
   stages {
