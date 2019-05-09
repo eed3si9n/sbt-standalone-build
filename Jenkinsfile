@@ -10,6 +10,8 @@ pipeline {
         sh 'cd /localhome/jenkinssbt/workspace/sbt-integration/'
         sh 'rm -rf target && mkdir -p target'
         sh 'rm -rf .sbt && cp -r /home/demiourgos1/.sbt .sbt'
+        sh 'rm -rf .sbt/preloaded/org.scala-lang/'
+        sh 'rm -rf .sbt/preloaded/org.scala-lang.modules/'
         sh 'git clone -n -q https://github.com/sbt/io.git target/io'
         dir('target/io') {
           sh "git fetch -f -u -q origin '+refs/pull/*/head:refs/pull/*/head' '+refs/tags/*:refs/tags/*' '+refs/heads/*:refs/heads/*'"
