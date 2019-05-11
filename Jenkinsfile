@@ -7,6 +7,7 @@ pipeline {
 
   environment {
     DATETIME_TAG = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss"))
+    BUILD_VERSION = "1.3.0-bin-" + "$DATETIME_TAG"
   }
 
   stages {
@@ -24,7 +25,7 @@ pipeline {
           sh "git fetch -f -u -q origin '+refs/pull/*/head:refs/pull/*/head' '+refs/tags/*:refs/tags/*' '+refs/heads/*:refs/heads/*'"
           sh 'git clean -fdxq'
           sh 'git reset -q --hard "${io}"'
-          sh 'sbt -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -ivy /localhome/jenkinssbt/workspace/sbt-integration/.ivy -no-colors publishLocal'
+          sh "sbt -Dsbt.build.version=${BUILD_VERSION} -sbt-dir /localhome/jenkinssbt/workspace/sbt-integration/.sbt -ivy /localhome/jenkinssbt/workspace/sbt-integration/.ivy -no-colors publishLocal"
         }
 
         sh 'git clone -n -q https://github.com/sbt/util.git target/util'
