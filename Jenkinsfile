@@ -4,9 +4,16 @@ pipeline {
       image 'eed3si9n/sbt:jdk8-alpine'
     }
   }
+
+  environment {
+    DATETIME_TAG = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss"))
+  }
+
   stages {
     stage('Build') {
       steps {
+        echo "timestamp ${DATETIME_TAG}"
+
         sh 'cd /localhome/jenkinssbt/workspace/sbt-integration/'
         sh 'rm -rf target && mkdir -p target'
         sh 'rm -rf .sbt && cp -r /home/demiourgos1/.sbt .sbt'
